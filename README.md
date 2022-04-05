@@ -1,2 +1,2 @@
 # PP3
-a short python game made by https://github.Peaceeee
+a short python game made by Peaceeee
