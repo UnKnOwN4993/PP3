@@ -1,5 +1,3 @@
-#dev-0.1
-
 from time import *
 from random import *
 global move1, move2, move3, move4
