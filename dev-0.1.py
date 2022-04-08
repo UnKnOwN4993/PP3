@@ -14,6 +14,7 @@ double_hit_p1, double_hit_p2 = 20, 20
 burning_time_p1, burning_time_p2 = 0, 0
 burning_damage = 2
 damage_p1, damage_p2 = 0, 0
+defense_p1, defense_p2 = 1, 1
 
 
 def character_choice():
@@ -21,6 +22,7 @@ def character_choice():
     print('[1] Korma')
     print('[2] Zenith')
     print('[3] Galen')
+    print('[4] Sharpshot')
     print()
 
 
@@ -40,19 +42,17 @@ def reset():
     global crit_damage_p1, crit_damage_p2
     p1_hp, p2_hp = 100, 100
     strength_p1, strength_p2 = 1, 1
-    crit_chance_p1, crit_chance_p2 = 1, 1
+    crit_chance_p1, crit_chance_p2 = 10, 10
     crit_damage_p1, crit_damage_p2 = 3, 3
-    double_hit_p1, double_hit_p2 = 2, 2
+    double_hit_p1, double_hit_p2 = 20, 20
     burning_time_p1, burning_time_p2 = 0, 0
     burning_damage = 2
 
 
 def health_int():
     global p1_hp, p2_hp
-    if p1_hp == int(p1_hp):
-        p1_hp = int(p1_hp)
-    if p2_hp == int(p2_hp):
-        p2_hp = int(p2_hp)
+    p1_hp = int(p1_hp)
+    p2_hp = int(p2_hp)
 
 
 def action():
@@ -62,7 +62,10 @@ def action():
     global double_hit_p1
     global crit_chance_p1
     global strength_p1
+    global defense_p1
     global move_type
+
+# Korma movesets
     if characters == 'Korma':
         if choose_moves == 1:
             damage_p1 = 10
@@ -78,12 +81,14 @@ def action():
             if p1_hp > 100:
                 p1_hp = 100
             move_type = stat_move
+            print('Player 1 HP has risen by 15')
         if choose_moves == 4:
             damage_p1 = 0
-            strength_p1 = strength_p1 + 0.2
-            print('Player 1 has risen strength by 0.2')
+            strength_p1 = strength_p1 + 0.5
+            print('Player 1 has risen strength by 5%')
             move_type = stat_move
 
+# Zenith movesets
     if characters == 'Zenith':
         if choose_moves == 1:
             damage_p1 = 7
@@ -93,20 +98,71 @@ def action():
             crit_chance_p1 = crit_chance_p1 + 5
             damage_p1 = 0
             move_type = stat_move
+            print('Player 1 has risen critical hit chance by 5%')
         if choose_moves == 3:
             damage_p1 = 10
         if choose_moves == 4:
-            damage_p1 = 10
+            move_type = stat_move
+            if p2_hp == 30:
+                print('Player 2 has the perfect amount of HP to get checkmated')
+                sleep(0.5)
+                damage_p1 = 30
+            else:
+                print('Move failed')
+                sleep(1)
+                print("Player 2 doesn't have the right circumstance to get checkmated")
+                sleep(1)
+                damage_p1 = 0
 
+# Galen movesets
     if characters == 'Galen':
         if choose_moves == 1:
             damage_p1 = 10
+            defense_p1 = defense_p1 + 0.2
+            move_type = normal_move
         if choose_moves == 2:
-            damage_p1 = 10
+            damage_p1 = 0
+            crit_chance_p1 = crit_chance_p1 + 10
+            print('Player 1 has risen critical hit chance by 10%')
+            move_type = stat_move
         if choose_moves == 3:
-            damage_p1 = 10
+            damage_p1 = 0
+            p1_hp = p1_hp + 20
+            print('Player 1 has heal 20 HP')
+            move_type = stat_move
         if choose_moves == 4:
+            damage_p1 = 0
+            if p1_hp <= 20:
+                p1_hp = p1_hp + 75
+                print('Player 1 has heal 75 HP')
+                move_type = stat_move
+
+# Sharpshot movesets
+    if characters == 'Sharpshot':
+        if choose_moves == 1:
             damage_p1 = 10
+            crit_chance_p1 = crit_chance_p1 + 2
+            move_type = normal_move
+        if choose_moves == 2:
+            damage_p1 = 5
+            crit_chance_p1 = crit_chance_p1 + 5
+            move_type = normal_move
+        if choose_moves == 3:
+            damage_p1 = 0
+            p1_hp = p1_hp + 10
+            print('Player 1 has heal 10 HP')
+            move_type = stat_move
+        if choose_moves == 4:
+            if p1_hp < 10:
+                damage_p1 = 20
+                move_type = normal_move
+            else:
+                damage_p1 = 0
+                print('Move failed')
+                sleep(1)
+                print('Player 1 HP is not low enough to use this move')
+                sleep(1)
+                move_type = stat_move
 
     damage_p1 = damage_p1 * strength_p1
 
@@ -116,7 +172,7 @@ choose_characters = int(input())
 while True:
     if choose_characters == 1:
         characters = 'Korma'
-        print('You have selected Korma')
+        print('You have selected', characters)
         move1 = 'Hellish slash'
         move2 = 'Hellish fire'
         move3 = 'Sins redemption'
@@ -125,7 +181,7 @@ while True:
         break
     if choose_characters == 2:
         characters = 'Zenith'
-        print('You have selected Zenith')
+        print('You have selected', characters)
         move1 = 'Zap'
         move2 = 'Strategize'
         move3 = 'Knowledge'
@@ -134,11 +190,20 @@ while True:
         break
     if choose_characters == 3:
         characters = 'Galen'
-        print('You have selected Galen')
-        move1 = 'Bullseye'
-        move2 = 'Returning arrow'
-        move3 = 'Disappearing arrow'
-        move4 = 'Heal'
+        print('You have selected', characters)
+        move1 = 'Teachings'
+        move2 = "God's blessing"
+        move3 = 'Blessed'
+        move4 = 'Ressurect'
+        sleep(2)
+        break
+    if choose_characters == 4:
+        characters = 'Sharpshot'
+        print('You have selected', characters)
+        move1 = 'Bang'
+        move2 = 'Headshot'
+        move3 = 'Alchoholism'
+        move4 = 'Take cover'
         sleep(2)
         break
 
@@ -150,7 +215,6 @@ print('GO!!')
 print()
 
 # In the game
-reset()
 while p2_hp > 0:
     moves_choice()
     choose_moves = int(input())
@@ -179,6 +243,7 @@ while p2_hp > 0:
             print('Player 1 has landed a devastating critical hit!!!')
 
 # normal damage
+    damage_p1 = damage_p1 / defense_p2
     p2_hp = p2_hp - damage_p1
     health_int()
     if p2_hp == p2_hp + damage_p1:
@@ -201,13 +266,15 @@ while p2_hp > 0:
 
 # burning damage
     if burning_time_p1 > 0:
-        p2_hp = p2_hp - burning_damage
-        print('Player 2 has taken 2 damage from burning')
-        sleep(0.5)
-        burning_time_p1 = burning_time_p1 - 1
-        health_int()
-        print('Player 2 now has', p2_hp, 'HP left')
-        sleep(1)
+        luck = randint(1, 100)
+        if luck <= 80:
+            p2_hp = p2_hp - burning_damage
+            print('Player 2 has taken 2 damage from burning')
+            sleep(0.5)
+            burning_time_p1 = burning_time_p1 - 1
+            health_int()
+            print('Player 2 now has', p2_hp, 'HP left')
+            sleep(1)
 
     if p2_hp <= 0:
-        print('Player 2 got knockout!')
+        print('Player 2 has been knockout!')
