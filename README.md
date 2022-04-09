@@ -11,10 +11,4 @@ If you would like to leave a suggestion join our [Official PP3 Discord Server](h
 - [x] sadistic ragdoll torturing
 - [ ] sussy
 
-### Pros & Cons
-| **Pros** |**Cons** |
-| --- | ----------- |
-| Cool | Not cool |
-| not sus | kinda sus |
-
 ---
