@@ -5,10 +5,3 @@ PP3 is a game where you take the role as a player What’s a player you might as
 If you would like to leave a suggestion join our [Official PP3 Discord Server](https://discord.gg/GBYKGUUG)
 
 ---
-
-### Gameplay
-- [x] fun
-- [x] sadistic ragdoll torturing
-- [ ] sussy
-
----
