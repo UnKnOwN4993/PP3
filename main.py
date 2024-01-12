@@ -22,10 +22,8 @@ p2_moves = ['', '', '', '', '']
 moves = ['', p1_moves, p2_moves]
 soul = [0, 0, 0]
 oppo_turn = 1
-resurrect_time = [0, 1, 1]
-cc_random = 0
+ressurect_time = [0, 1, 1]
 choose_characters = 'a'
-stun_random = 100
 
 
 def character_choice():
@@ -33,7 +31,7 @@ def character_choice():
     print('What character would you like to select')
     print('[1] Korma        [5] Splitzo')
     print('[2] Zenith       [6] Claec')
-    print('[3] Galen        [7] Krysta')
+    print('[3] Galen        [7] New character')
     print('[4] Sharpshot    [r] random\n')
 
 
@@ -41,7 +39,7 @@ def moves_choice():
     print(f'\nPlayer {turn}:')
 
     int(hp[turn])
-    print('What move would you like to do:            HP:', int(hp[turn]), '  CC:', crit_chance[turn] + cc_random)
+    print('What move would you like to do:            HP:', hp[turn], '  CC:', crit_chance[turn])
     print("[1]", moves[turn][1])
     print("[2]", moves[turn][2])
     print("[3]", moves[turn][3])
@@ -74,21 +72,21 @@ def set_character():
         choose_characters = 0
     while True:
         if choose_characters != 'r':
-            if int(choose_characters) > 7 or int(choose_characters) < 1:
+            if int(choose_characters) > 6 or int(choose_characters) < 1:
                 choose_characters = input()
 
         if choose_characters == 'r':
             if not in_gamemode_4:
                 print('You have selected random')
                 sleep(2)
-            choose_characters = randint(1, 7)
+            choose_characters = randint(1, 6)
             continue
 
         elif choose_characters == 'summon TSJ':
-            characters[turn] = 'Teacher Saijai'
-            print('You have summoned TSJ!!!')
+            characters = 'Teacher Saijai'
+            print('You have summmoned TSJ!!!')
             sleep(2)
-            print('The world SHALL PERISH IN HER HANDS')
+            print('The world SHALL PERRISH IN HER HANDS')
             sleep(2)
             moves[turn][1] = 'Emotional damage'
             moves[turn][2] = 'Spare life'
@@ -97,9 +95,9 @@ def set_character():
             choose_characters = 1
 
         elif int(choose_characters) == 1:
-            characters[turn] = 'Korma'
+            characters = 'Korma'
             if not in_gamemode_4:
-                print('You have selected', characters[turn])
+                print('You have selected', characters)
                 print('')
                 sleep(2)
             moves[turn][1] = 'Hellish slash'
@@ -108,9 +106,9 @@ def set_character():
             moves[turn][4] = "Devil's Wrath"
 
         elif int(choose_characters) == 2:
-            characters[turn] = 'Zenith'
+            characters = 'Zenith'
             if not in_gamemode_4:
-                print('You have selected', characters[turn])
+                print('You have selected', characters)
                 print('')
                 sleep(2)
             moves[turn][1] = 'Zap'
@@ -119,20 +117,20 @@ def set_character():
             moves[turn][4] = 'Checkmate'
 
         elif int(choose_characters) == 3:
-            characters[turn] = 'Galen'
+            characters = 'Galen'
             if not in_gamemode_4:
-                print('You have selected', characters[turn])
+                print('You have selected', characters)
                 print('')
                 sleep(2)
             moves[turn][1] = 'Teachings'
             moves[turn][2] = "God's blessing"
             moves[turn][3] = 'Blessed'
-            moves[turn][4] = 'Resurrect'
+            moves[turn][4] = 'Ressurect'
 
         elif int(choose_characters) == 4:
-            characters[turn] = 'Sharpshot'
+            characters = 'Sharpshot'
             if not in_gamemode_4:
-                print('You have selected', characters[turn])
+                print('You have selected', characters)
                 print('')
                 sleep(2)
             moves[turn][1] = 'Bang'
@@ -141,12 +139,12 @@ def set_character():
             moves[turn][4] = 'Take cover'
 
         elif int(choose_characters) == 5:
-            characters[turn] = 'Splitzo'
+            characters = 'Splitzo'
             if not in_gamemode_4:
-                print('You have selected', characters[turn])
+                print('You have selected', characters)
                 print('')
                 sleep(2)
-                characters[turn] = 'Sovary'
+                characters = 'Sovary'
                 moves[turn][1] = 'Slice'
                 moves[turn][2] = 'Spice'
                 moves[turn][3] = 'Flying croissant'
@@ -154,22 +152,22 @@ def set_character():
             else:
                 luck = randint(1, 2)
                 if luck == 1:
-                    characters[turn] = 'Sovary'
+                    characters = 'Sovary'
                     moves[turn][1] = 'Slice'
                     moves[turn][2] = 'Spice'
                     moves[turn][3] = 'Flying croissant'
                     moves[turn][4] = 'Switch'
                 if luck == 2:
-                    characters[turn] = 'Swete'
+                    characters = 'Swete'
                     moves[turn][1] = 'Coffee cake'
                     moves[turn][2] = 'Nutritious carrot'
                     moves[turn][3] = 'Delightful smoothie'
                     moves[turn][4] = 'Switch'
 
         elif int(choose_characters) == 6:
-            characters[turn] = 'Claec'
+            characters = 'Claec'
             if not in_gamemode_4:
-                print('You have selected', characters[turn])
+                print('You have selected', characters)
                 print('')
                 sleep(2)
             moves[turn][1] = 'Gather'
@@ -177,22 +175,11 @@ def set_character():
             moves[turn][3] = 'Sacrificing soul'
             moves[turn][4] = 'Soul unleash'
 
-        elif int(choose_characters) == 7:
-            characters[turn] = 'Krysta'
-            if not in_gamemode_4:
-                print('You have selected', characters[turn])
-                print('')
-                sleep(2)
-            moves[turn][1] = 'Agonizing amethyst'
-            moves[turn][2] = 'Internal refraction'
-            moves[turn][3] = 'Ruby of radiance'
-            moves[turn][4] = 'Crystal clear'
-
         else:
             print('That is not a valid choice, please choose the character again\n')
             continue
 
-        if choose_characters == 'summon TSJ' or 1 <= int(choose_characters) <= 7:
+        if choose_characters == 'summon TSJ' or 1 <= int(choose_characters) <= 6:
             break
 
 
@@ -209,12 +196,12 @@ def action():
     global move_type
     global luck
     global soul
-    global resurrect_time
-    global stun_random
+    global ressurect_time
 
     # Korma movesets
-    if characters[turn] == 'Korma':
+    if characters == 'Korma':
         if choose_moves == 1:
+            print(turn)
             damage[turn] = 10
             burning_time[turn] += 1
             move_type = normal_move
@@ -236,7 +223,7 @@ def action():
             move_type = stat_move
 
     # Zenith movesets
-    if characters[turn] == 'Zenith':
+    if characters == 'Zenith':
         if choose_moves == 1:
             damage[turn] = 7
             double_hit = 70
@@ -250,22 +237,22 @@ def action():
             damage[turn] = 10
             move_type = normal_move
         if choose_moves == 4:
-            if 35 <= oppo_hp <= 40:
+            move_type = stat_move
+            if oppo_hp == 40:
                 print('Player', oppo_turn, 'has the perfect amount of HP to get checkmated')
                 sleep(0.5)
                 print('Player', oppo_turn, 'got checkmated!!')
                 sleep(2)
-                damage[turn] = oppo_hp
+                damage[turn] = 40
             else:
                 print('Move failed')
                 sleep(1)
                 print("Player", oppo_turn, "doesn't have the right circumstance to get checkmated")
                 sleep(1)
                 damage[turn] = 0
-            move_type = stat_move
 
     # Galen movesets
-    if characters[turn] == 'Galen':
+    if characters == 'Galen':
         if choose_moves == 1:
             damage[turn] = 10
             move_type = normal_move
@@ -284,19 +271,19 @@ def action():
         if choose_moves == 4:
             damage[turn] = 0
             if hp[turn] <= 20:
-                if resurrect_time[turn] > 0:
+                if ressurect_time[turn] > 0:
                     hp[turn] = hp[turn] + 75
                     print('Player', turn, 'has heal 75 HP')
-                    resurrect_time[turn] -= 1
-                    print('Player', turn, 'now has', resurrect_time[turn], 'chances of resurrecting again')
+                    ressurect_time[turn] -= 1
+                    print('Player', turn, 'now has', ressurect_time[turn], 'chances of ressurecting again')
                 else:
-                    print('Player', turn, 'has already resurrected and cannot be used again')
+                    print('Player', turn, 'has already ressurected and cannot be used again')
             else:
-                print('Player', turn, "doesn't have the right circumstance to use resurrect")
+                print('Player', turn, "doesn't have the right circumstance to use ressurect")
             move_type = stat_move
 
     # Sharpshot movesets
-    if characters[turn] == 'Sharpshot':
+    if characters == 'Sharpshot':
         if choose_moves == 1:
             damage[turn] = 10
             crit_chance[turn] += 5
@@ -327,7 +314,7 @@ def action():
 
     # Splitzo movesets
     # Sovary movesets
-    if characters[turn] == 'Sovary':
+    if characters == 'Sovary':
         if choose_moves == 1:
             damage[turn] = 10
             move_type = normal_move
@@ -341,7 +328,7 @@ def action():
             move_type = normal_move
         if choose_moves == 4:
             damage[turn] = 0
-            characters[turn] = 'Swete'
+            characters = 'Swete'
             moves[turn][1] = 'Coffee cake'
             moves[turn][2] = 'Nutritious carrot'
             moves[turn][3] = 'Delightful smoothie'
@@ -349,7 +336,7 @@ def action():
             move_type = stat_move
 
     # Swete movesets
-    elif characters[turn] == 'Swete':
+    elif characters == 'Swete':
         damage[turn] = 0
         move_type = stat_move
         if choose_moves == 1:
@@ -364,20 +351,20 @@ def action():
                 hp[turn] = 100
             print('Player', turn, 'has heal 10 HP')
         if choose_moves == 4:
-            characters[turn] = 'Sovary'
+            characters = 'Sovary'
             moves[turn][1] = 'Slice'
             moves[turn][2] = 'Spice'
             moves[turn][3] = 'Flying croissant'
             print('Sovary has taken over the body!!')
 
     # Claec movesets
-    elif characters[turn] == 'Claec':
+    elif characters == 'Claec':
         if choose_moves == 1:
             damage[turn] = 0
             soul[turn] += 1
             luck = randint(1, 10)
             if luck <= 3:
-                soul[turn] += 1
+                soul[turn] += 2
                 print('Player', turn, 'got lucky and has gathered 2 souls')
             else:
                 print('Player', turn, 'has gathered 1 soul')
@@ -395,10 +382,10 @@ def action():
         if choose_moves == 3:
             damage[turn] = 0
             if soul[turn] > 0:
-                hp[turn] += 12
+                hp[turn] += 5
                 if hp[turn] > 100:
                     hp[turn] = 100
-                print('Player', turn, 'has sacrificed 1 soul and heal 12 HP')
+                print('Player', turn, 'has sacrificed 1 soul and heal 5 HP')
                 soul[turn] -= 1
             else:
                 print('Player', turn, "doesn't have enough souls to heal")
@@ -413,44 +400,13 @@ def action():
             move_type = normal_move
             print('Player', turn, 'has unleashed', soul[turn], 'soul')
             soul[turn] = 0
-            if strength[turn] > 1:
-                strength[turn] = 1
+            if strength > 1:
+                strength = 1
                 sleep(1)
                 print("Player", turn, "soul's will now have the normal amount of strength")
                 sleep(1)
 
-    # Krysta movesets
-    if characters[turn] == 'Krysta':
-        if choose_moves == 1:
-            damage[turn] = 6
-            double_hit = 70
-            move_type = normal_move
-        if choose_moves == 2:
-            damage[turn] = 0
-            crit_chance[turn] += 10
-            print('Player', turn, 'has risen critical hit chance by 10%')
-            move_type = stat_move
-        if choose_moves == 3:
-            damage[turn] = 0
-            hp[turn] += 3
-            if hp[turn] > 100:
-                hp[turn] = 100
-            move_type = stat_move
-            print('Player', turn, 'HP has risen by 3')
-        if choose_moves == 4:
-            stun_random = randint(1, 100)
-            if stun_random <= 40:
-                damage[turn] = 5
-                print('Her opponent is stunned!!')
-                move_type = normal_move
-            else:
-                damage[turn] = 0
-                hp[turn] -= 5
-                print('Krysta took 5 damage from her own attack')
-                move_type = stat_move
-
-    # TSJ movesets
-    elif characters[turn] == 'Teacher Saijai':
+    elif characters == 'Teacher Saijai':
         hp[turn] = 100000
         crit_damage[turn] = 1000
         crit_chance[turn] = 300
@@ -485,12 +441,12 @@ def bot_turn():
     global luck
     global soul
     global choose_moves
-    global resurrect_time
+    global ressurect_time
 
     while True:
 
         # Korma bot
-        if characters[turn] == 'Korma':
+        if characters == 'Korma':
             choose_moves = randint(1, 4)
             if choose_moves == 2:
                 if burning_time[turn] == 0:
@@ -505,9 +461,9 @@ def bot_turn():
                 break
 
         # Zenith bot
-        if characters[turn] == 'Zenith':
+        if characters == 'Zenith':
             choose_moves = randint(1, 3)
-            if 35 <= oppo_hp <= 40:
+            if oppo_hp == 30:
                 choose_moves = 4
                 break
             elif oppo_hp < 20:
@@ -516,12 +472,10 @@ def bot_turn():
                 break
 
         # Galen bot
-        if characters[turn] == 'Galen':
+        if characters == 'Galen':
             choose_moves = randint(1, 3)
             if hp[turn] <= 20:
-                if resurrect_time[turn] > 0:
-                    choose_moves = 4
-                    break
+                choose_moves = 4
             if choose_moves == 3:
                 if hp[turn] <= 80:
                     break
@@ -532,19 +486,18 @@ def bot_turn():
                 break
 
         # Sharpshot bot
-        if characters[turn] == 'Sharpshot':
+        if characters == 'Sharpshot':
             choose_moves = randint(1, 3)
             if choose_moves == 3:
                 if hp[turn] <= 93:
                     break
             elif hp[turn] <= 15:
                 choose_moves = 4
-                break
             else:
                 break
 
         # Sovary bot
-        if characters[turn] == 'Sovary':
+        if characters == 'Sovary':
             choose_moves = randint(1, 4)
             if choose_moves == 2:
                 if burning_time[turn] <= 0:
@@ -553,7 +506,7 @@ def bot_turn():
                 break
 
         # Swete bot
-        if characters[turn] == 'Swete':
+        if characters == 'Swete':
             choose_moves = randint(1, 4)
             if choose_moves == 3:
                 if hp[turn] <= 90:
@@ -562,7 +515,7 @@ def bot_turn():
                 break
 
         # Claec bot
-        if characters[turn] == 'Claec':
+        if characters == 'Claec':
             choose_moves = randint(1, 2)
             luck = randint(1, 10)
             if luck == 1:
@@ -580,20 +533,8 @@ def bot_turn():
             else:
                 break
 
-        # Krysta bot
-        if characters[turn] == 'Krysta':
-            choose_moves = randint(1, 4)
-            if choose_moves == 3:
-                if hp[turn] <= 97:
-                    break
-            elif oppo_hp <= 12:
-                choose_moves = 1
-                break
-            else:
-                break
-
         # TSJ bot
-        if characters[turn] == 'Teacher Saijai':
+        if characters == 'Teacher Saijai':
             if oppo_hp == 100:
                 choose_moves = 1
                 break
@@ -622,7 +563,6 @@ while True:
         break
     elif gamemode == 4:
         print('You have selected randomizer mode')
-        crit_chance = [0, 0, 0]
         in_gamemode_4 = True
         sleep(1)
         print('\nHow many people are playing this mode?')
@@ -646,7 +586,6 @@ if gamemode != 3:
     turn = 2
     set_character()
 
-# main
 print('The round will start in...')
 print(3), sleep(1)
 print(2), sleep(1)
@@ -654,16 +593,15 @@ print(1), sleep(1)
 print('GO!!')
 print()
 
-turn -= 1
+turn = turn - 1
 while True:
-    oppositing_turn()
     if gamemode == 3:
         turn = 1
     choose_moves = 0
     if gamemode == 4:
         choose_characters = 'r'
         set_character()
-        cc_random = randint(1, 100)
+        crit_chance[turn] = randint(1, 100)
     if gamemode == 1 or gamemode_4_player == 1:
         if turn == 2:
             sleep(1)
@@ -676,14 +614,15 @@ while True:
         moves_choice()
         choose_moves = int(input())
 
-    print(characters[turn], 'used', moves[turn][choose_moves])
+    oppositing_turn()
+    print(characters, 'used', moves[turn][choose_moves])
     sleep(2)
     action()
 
     # critical damage
     if move_type == normal_move:
         luck = randint(1, 100)
-        if luck <= crit_chance[turn] + cc_random:
+        if luck <= crit_chance[turn]:
             damage[turn] *= 3
             print('Player', turn, 'has landed a devastating critical hit!!!')
 
@@ -719,16 +658,13 @@ while True:
             print('Player', oppo_turn, 'now has', int(oppo_hp), 'HP left')
             sleep(1)
 
-    if oppo_hp <= 0:
-        print(f'Player {oppo_turn} has been knockout!')
+    if hp[turn] <= 0:
+        print(f'Player {turn} has been knockout!')
         exit()
 
-    if stun_random >= 40:
-        if turn == 1:
-            turn = 2
-            hp[2] = oppo_hp
-        elif turn == 2:
-            turn = 1
-            hp[1] = oppo_hp
-
-    stun_random = 100
+    if turn == 1:
+        turn = 2
+        hp[2] = oppo_hp
+    elif turn == 2:
+        turn = 1
+        hp[1] = oppo_hp
