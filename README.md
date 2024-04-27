@@ -4,7 +4,6 @@ PP3 is a game where you take the role as a player What’s a player you might as
 
 ~~If you would like to leave a suggestion join our [Official PP3 Discord Server]()~~
 
-
 > [!NOTE]
-> This is not my game, it was made by my friend who has no idea how to use git (bro refuses to read the manual). I only managed and contributed to some parts of the code.
+> This game probably won't receive any more updates as of now 😔
 ---
