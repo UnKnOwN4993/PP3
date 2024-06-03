@@ -11,9 +11,23 @@ Players strategically use their character's moves to gain an advantage over thei
 
 ~~If you would like to leave a suggestion join our [Official PP3 Discord Server]()~~
 
+## 🪜 Getting started
+
+Ensure the following prerequisites are installed on your machine:
+
+- [Python 3.8+](https://www.python.org/downloads/)
+- [Pyinstaller](https://pypi.org/project/pyinstaller/)
+- [venv](https://docs.python.org/3/library/venv.html) (optional):
+
+    To initialize the virtual environment, run the following command:
+
+    ```bash
+    python -m venv .venv
+    ```
+
 ## 🛠️ Building
 
-To build this project into an executable, you will need to have Python and [PyInstaller](https://pypi.org/project/pyinstaller/) installed on your machine.
+To build this project into an executable, you will need to have Python and PyInstaller installed on your machine. (see [Getting started](#🪜-getting-started) for more information).
 > It is recommended to use a virtual environment to avoid conflicts with other Python packages.
 
 1. Install PyInstaller using pip:
