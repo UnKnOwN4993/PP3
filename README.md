@@ -45,4 +45,5 @@ pyinstaller main.spec
 
 After running this command, PyInstaller will create a `dist` directory in the current directory. Inside `dist`, you will find your standalone executable file named `main.exe` (or just main on Unix-based systems).
 
-> [!NOTE] This game probably won't receive any more updates as of now 😔
+> [!CAUTION]
+> This game probably won't receive any more updates as of now 😔
